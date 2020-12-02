@@ -1,0 +1,71 @@
+{% block content %}
+
+{% if error %}
+
+	<br>
+	{{ error }}
+	<br>
+	
+{% endif %}
+
+{% load static %}
+<link rel="stylesheet" href='{% static "css/bootstrap.css" %}'>
+<link rel="stylesheet" href='{% static "css/floating-labels.css" %}'>
+<title>Product Hunt - Create!</title>
+
+<form method="POST" action="{% url 'create' %}" class="form-signin" enctype="multipart/form-data">
+	{% csrf_token %}
+      <div class="text-center mb-4">
+        <!-- <a class="navbar-brand" href="{% url 'home' %}">
+        	<img src="{% static 'kitty.png' %}" height=100px>
+		</a> -->
+		<h4 class="py-1">Add an amazing product.</h4>
+        <!-- <p class="prompt">We're a community of product people here to geek out and discover new, interesting products.</p> -->
+      </div>
+
+      <div class="form-label-group">
+        <input type="text" name="title" class="form-control" placeholder="Title" required autofocus>
+        <label>Title</label>
+      </div>
+
+      <div class="form-label-group">
+        <!-- <input type="textbox" name="body" class="form-control" placeholder="Body" required> -->
+        <textarea name="body" class="form-control" placeholder="Body" required rows="4"></textarea>
+        <!-- <label>Body</label> -->          
+      </div>
+
+      <div class="form-label-group">
+        <input type="text" name="url" class="form-control" placeholder="URL" required>
+        <label>URL</label>
+      </div>
+
+      <div class="form-label-group">
+        <input type="text" name="summary" class="form-control" placeholder="Summary" required>
+        <label>Summary</label>
+      </div>
+
+      <div class="form-label-group">
+        <input type="text" name="tag" class="form-control" placeholder="Tag" required>
+        <label>Tag</label>
+      </div>
+
+      <div class="row">
+      	<div class="btn-img col-lg-6">
+	        <input type="file" name="image" placeholder="Image" required>
+	        <label>Add an image</label>
+	      </div>
+
+	      <div class="btn-img col-lg-6">
+	        <input type="file" name="icon" placeholder="Icon" required>
+	        <label>Add an icon</label>
+	      </div>
+      </div>	      
+
+      <div class="checkbox mb-3">
+      </div>
+      <button class="btn btn-block" type="submit" value="add product">Add product!</button>
+      <!-- <p class="py-3 prompt">Old friend? <a href="{% url 'login' %}">Login to your account!</a></p> -->
+    </form>
+
+
+{% endblock %}

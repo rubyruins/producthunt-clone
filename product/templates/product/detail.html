@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" href='{% static "css/detail.css" %}'>
+<main role="main" class="container">
+	<div class="row mt-5">
+		<div class="col-md-8 blog-main">
+			<div class="blog-post">
+				<div class="row">
+					<div class="col-lg-2">
+						<img src="{{ product.icon.url }}" class="img-fluid">
+					</div>
+					<div class="col-lg-10">
+						<a class="main-title" href="{{ product.url }}">
+							<h1>{{ product.title }}</h1>
+						</a>
+						<p>{{ product.summary }}</p>
+					</div>
+				</div>
+				<hr>
+				<img src="{{ product.image.url }}" class="img-fluid pt-4 pb-4" />
+				<p>{{ product.body|linebreaks }}</p>
+			</div>
+		</div>
+		
+		<aside class="col-md-4 blog-sidebar">
+			<div class="p-3 mb-3 bg-light rounded">
+				<p><i class="fa fa-external-link" aria-hidden="true"></i><a href="{{ product.url }}">{{ product.url }}</a></p>
+				<p class="mb-0">Hunted by {{ product.hunter }}</p>
+				<p>{{ product.pub_date_pretty}}</p>
+				<a href="javascript:{document.getElementById('upvote').submit()}" style="text-decoration: none;">
+					<button class="btn btn-primary btn-lg btn-block">
+						<span class="fa fa-thumbs-up"></span> Upvote {{ product.votes_total }}
+					</button>
+				</a>
+				<form id="upvote" method="POST" action="{% url 'upvote' product.id %}">
+					{% csrf_token%}
+					<input type="hidden">
+				</form>
+			</div>
+		</aside>
+	</div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% block content %}
+
+{% if error %}
+
+	<br>
+	{{ error }}
+	<br>
+	
+{% endif %}
+
+{% load static %}
+<link rel="stylesheet" href='{% static "css/bootstrap.css" %}'>
+<link rel="stylesheet" href='{% static "css/floating-labels.css" %}'>
+<title>Product Hunt - Login</title>
+
+<form method="POST" action="{% url 'login' %}" class="form-signin">
+	{% csrf_token %}
+      <div class="text-center mb-4">
+        <a class="navbar-brand" href="{% url 'home' %}">
+        	<img src="{% static 'kitty.png' %}" height=100px>
+		</a>
+		<h4 class="py-1">Login to Product Hunt</h4>
+        <p class="prompt">We're a community of product people here to geek out and discover new, interesting products.</p>
+      </div>
+
+      <div class="form-label-group">
+        <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
+        <label>Username</label>
+      </div>
+
+      <div class="form-label-group">
+        <input type="password" name="password" class="form-control" placeholder="Password" required>
+        <label>Password</label>
+      </div>
+
+      <div class="checkbox mb-3">
+      </div>
+      <button class="btn btn-block" type="submit" value="login">Log in</button>
+      <p class="py-3 prompt">New here? <a href="{% url 'signup' %}">Sign up today!</a></p>
+    </form>
+
+
+{% endblock %}

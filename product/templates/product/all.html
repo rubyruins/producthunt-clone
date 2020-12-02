@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+
+{% block content %}    
+        
+       
+<table id="shTable" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Tag</th>
+            <th>Hunter</th>         
+            <th>Upvotes</th>
+        </tr>
+    </thead>           
+</table>
+<script>
+    {% autoescape off %}
+      var result_data = {{ data}};
+    {% endautoescape %}
+    $(document).ready(function() {
+        var shTable=jQuery('#shTable').DataTable({
+        "aaData":result_data,  
+        });
+    });
+</script>
+
+{% endblock %}
