@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .models import Product
+from django.contrib.auth.models import User
 import random
 
 # Create your views here.
@@ -22,9 +23,9 @@ def all(request):
 		name=User.objects.filter(id=int(hunter)).values_list('username')
 		for i in name:
 			name1=i[0]
-		data.append(title,tag,name1,votes_total)
-		#data.append([btn,"<a href='/edit_product/"+str(product_id)+"' class='btn'><i class='fas fa-edit'></i> Edit</a>"])
-		#data=[1,2]
+		data.append([title,tag,name1,votes_total])
+		# data.append([btn,"<a href='/edit_product/"+str(product_id)+"' class='btn'><i class='fas fa-edit'></i> Edit</a>"])
+		# data=[1,2]
 	return render(request, 'product/all.html', {'products': products, 'data': data,})
 
 @login_required(login_url='/account/signup')

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Product Hunt ft. django</title>
+    <title>Product Hunt</title>
     {% load static %}
     <link rel="stylesheet" href='{% static "css/base.css" %}'>
     <link rel="stylesheet" href='{% static "css/bootstrap.css" %}'>
@@ -39,7 +39,7 @@
         </div>
       </header>
 
-      <div class="nav-scroller py-1 mb-2">
+      <!-- <div class="nav-scroller py-1 mb-2">
         <nav class="nav d-flex justify-content-between">
           <a class="p-2 text-muted" href="#">World</a>
           <a class="p-2 text-muted" href="#">U.S.</a>
@@ -54,14 +54,14 @@
           <a class="p-2 text-muted" href="#">Style</a>
           <a class="p-2 text-muted" href="#">Travel</a>
         </nav>
-      </div>
+      </div> -->
     </div>
     <main class="container">
       {% block content %}
       {% endblock %}
     </main>
     <footer>
-      <p class="prompt">made with &#9829; by rubyruins &copy; {% now 'Y'%}</p>
+      <p class="prompt">made with &#9829; and Django &copy; {% now 'Y'%}</p>
     </footer>
     <script src="https://use.fontawesome.com/af75c91e2d.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
