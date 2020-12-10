@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
-
+from . import forms
 # Create your views here.
 def signup(request):
 	if request.method == 'POST':
@@ -16,7 +16,7 @@ def signup(request):
 		else:
 			return render(request, 'account/signup.html', {'error': 'Passwords do not match!'})
 	else:
-		return render(request, 'account/signup.html')
+		return render(request, 'account/signup.html',{'name':forms.name(),'pass1':forms.passw1(),'pass2':forms.passw2()})
 
 def login(request):
 	if request.method == 'POST':
@@ -27,7 +27,7 @@ def login(request):
 		else:
 			return render(request, 'account/login.html', {'error': 'Username and passwords do not match!'})
 	else:
-		return render(request, 'account/login.html')
+		return render(request, 'account/login.html',{'name':forms.name(),'pass':forms.passw()})
 
 def logout(request):
 	if request.method =='POST':

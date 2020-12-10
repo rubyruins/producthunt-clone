@@ -24,13 +24,17 @@
       </div>
 
       <div class="form-label-group">
-        <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
-        <label>Username</label>
+        <!-- <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
+        <label>Username</label> -->
+        {% csrf_token %}
+        {{ name }}
       </div>
 
       <div class="form-label-group">
-        <input type="password" name="password" class="form-control" placeholder="Password" required>
-        <label>Password</label>
+        <!-- <input type="password" name="password" class="form-control" placeholder="Password" required>
+        <label>Password</label> -->
+        {% csrf_token %}
+        {{ pass }}
       </div>
 
       <div class="checkbox mb-3">
